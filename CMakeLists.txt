@@ -499,6 +499,19 @@ elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES "ppc64le")
 else()
     message(STATUS "x86 detected")
     if (MSVC)
+    
+        # 
+        # Static link msvc
+        #
+        set(CompilerFlags
+            CMAKE_CXX_FLAGS
+            CMAKE_CXX_FLAGS_DEBUG
+            CMAKE_CXX_FLAGS_RELEASE
+        )
+        foreach(CompilerFlag ${CompilerFlags})
+            string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
+        endforeach()
+
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8")
         set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /utf-8")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /utf-8")
