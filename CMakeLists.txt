@@ -46,6 +46,7 @@ else()
 endif()
 
 option(BUILD_SHARED_LIBS              "whisper: build shared libs" ${BUILD_SHARED_LIBS_DEFAULT})
+option(WHISPER_USE_STATIC_MSVC "Use static MSVC runtime" ON)
 
 option(WHISPER_ALL_WARNINGS           "whisper: enable all compiler warnings"                   ON)
 option(WHISPER_ALL_WARNINGS_3RD_PARTY "whisper: enable all compiler warnings in 3rd party libs" OFF)
@@ -503,14 +504,20 @@ else()
         # 
         # Static link msvc
         #
-        set(CompilerFlags
-            CMAKE_CXX_FLAGS
-            CMAKE_CXX_FLAGS_DEBUG
-            CMAKE_CXX_FLAGS_RELEASE
-        )
-        foreach(CompilerFlag ${CompilerFlags})
-            string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
-        endforeach()
+        if(WHISPER_USE_STATIC_MSVC)
+            # Static link MSVC
+            set(CompilerFlags
+                CMAKE_CXX_FLAGS
+                CMAKE_CXX_FLAGS_DEBUG
+                CMAKE_CXX_FLAGS_RELEASE
+            )
+            foreach(CompilerFlag ${CompilerFlags})
+                string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
+            endforeach()
+        else()
+            # Use dynamic linking
+            message(STATUS "WHISPER_USE_STATIC_MSVC is OFF. Using default dynamic linking.")
+        endif()
 
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8")
         set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /utf-8")
