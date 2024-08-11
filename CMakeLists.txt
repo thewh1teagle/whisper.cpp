@@ -506,6 +506,7 @@ else()
         #
         if(WHISPER_USE_STATIC_MSVC)
             # Static link MSVC
+            message(STATUS "WHISPER_USE_STATIC_MSVC is OFF. Using static msvc.")
             set(CompilerFlags
                 CMAKE_CXX_FLAGS
                 CMAKE_CXX_FLAGS_DEBUG
@@ -515,10 +516,17 @@ else()
                 string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
             endforeach()
         else()
-            # Use dynamic linking
-            message(STATUS "WHISPER_USE_STATIC_MSVC is OFF. Using default dynamic linking.")
+            message(STATUS "WHISPER_USE_STATIC_MSVC is OFF. Using dynamic msvc.")
+            # Dynamic link MSVC
+            set(CompilerFlags
+                CMAKE_CXX_FLAGS
+                CMAKE_CXX_FLAGS_DEBUG
+                CMAKE_CXX_FLAGS_RELEASE
+            )
+            foreach(CompilerFlag ${CompilerFlags})
+                string(REPLACE "/MT" "/MD" ${CompilerFlag} "${${CompilerFlag}}")
+            endforeach()
         endif()
-
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8")
         set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /utf-8")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /utf-8")
