@@ -46,7 +46,7 @@ else()
 endif()
 
 option(BUILD_SHARED_LIBS              "whisper: build shared libs" ${BUILD_SHARED_LIBS_DEFAULT})
-option(WHISPER_USE_STATIC_MSVC "Use static MSVC runtime" ON)
+option(WHISPER_USE_STATIC_MSVC "Use static MSVC runtime" OFF)
 
 option(WHISPER_ALL_WARNINGS           "whisper: enable all compiler warnings"                   ON)
 option(WHISPER_ALL_WARNINGS_3RD_PARTY "whisper: enable all compiler warnings in 3rd party libs" OFF)
