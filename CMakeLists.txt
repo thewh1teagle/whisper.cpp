@@ -46,7 +46,6 @@ else()
 endif()
 
 option(BUILD_SHARED_LIBS              "whisper: build shared libs" ${BUILD_SHARED_LIBS_DEFAULT})
-option(WHISPER_USE_STATIC_MSVC "Use static MSVC runtime" OFF)
 
 option(WHISPER_ALL_WARNINGS           "whisper: enable all compiler warnings"                   ON)
 option(WHISPER_ALL_WARNINGS_3RD_PARTY "whisper: enable all compiler warnings in 3rd party libs" OFF)
@@ -500,33 +499,6 @@ elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES "ppc64le")
 else()
     message(STATUS "x86 detected")
     if (MSVC)
-    
-        # 
-        # Static link msvc
-        #
-        if(WHISPER_USE_STATIC_MSVC)
-            # Static link MSVC
-            message(STATUS "WHISPER_USE_STATIC_MSVC is OFF. Using static msvc.")
-            set(CompilerFlags
-                CMAKE_CXX_FLAGS
-                CMAKE_CXX_FLAGS_DEBUG
-                CMAKE_CXX_FLAGS_RELEASE
-            )
-            foreach(CompilerFlag ${CompilerFlags})
-                string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
-            endforeach()
-        else()
-            message(STATUS "WHISPER_USE_STATIC_MSVC is OFF. Using dynamic msvc.")
-            # Dynamic link MSVC
-            set(CompilerFlags
-                CMAKE_CXX_FLAGS
-                CMAKE_CXX_FLAGS_DEBUG
-                CMAKE_CXX_FLAGS_RELEASE
-            )
-            foreach(CompilerFlag ${CompilerFlags})
-                string(REPLACE "/MT" "/MD" ${CompilerFlag} "${${CompilerFlag}}")
-            endforeach()
-        endif()
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8")
         set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /utf-8")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /utf-8")
