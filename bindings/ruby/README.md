@@ -323,7 +323,24 @@ whisper
   end
 ```
 
-The second argument `samples` may be an array, an object with `length` and `each` method, or a MemoryView. If you can prepare audio data as C array and export it as a MemoryView, whispercpp accepts and works with it with zero copy.
+The second argument `samples` may be an array, an object with `length` and `each` method, or a MemoryView.
+
+If you can prepare audio data as C array and export it as a MemoryView, whispercpp accepts and works with it with zero copy.
+
+```ruby
+require "torchaudio"
+require "arrow-numo-narray"
+require "whisper"
+
+waveform, sample_rate = TorchAudio.load("test/fixtures/jfk.wav")
+# Convert Torch::Tensor to Arrow::Array via Numo::NArray
+samples = waveform.squeeze.numo.to_arrow.to_arrow_array
+
+whisper = Whisper::Context.new("base")
+whisper
+  # Arrow::Array exports MemoryView
+  .full(Whisper::Params.new, samples)
+```
 
 Using VAD separately from ASR
 -----------------------------
@@ -334,11 +351,25 @@ VAD feature itself is useful. You can use it separately from ASR:
 vad = Whisper::VAD::Context.new("silero-v6.2.0")
 vad
   .detect("path/to/audio.wav", Whisper::VAD::Params.new)
-  .each_with_index do |segment, index|
+  .each.with_index do |segment, index|
     segment => {start_time: st, end_time: ed} # `Segment` responds to `#deconstruct_keys`
 
     puts "[%{nth}: %{st} --> %{ed}]" % {nth: index + 1, st:, ed:}
   end
+```
+
+You may also low level API `Whisper::VAD::Context#segments_from_samples` as such `Whisper::Context#full`:
+
+```ruby
+# Ruby Array
+reader = WaveFile::Reader.new("path/to/audio.wav", WaveFile::Format.new(:mono, :float, 16000))
+samples = reader.enum_for(:each_buffer).map(&:samples).flatten
+
+# Or, object which exports MemoryView
+waveform, sample_rate = TorchAudio.load("test/fixtures/jfk.wav")
+samples = waveform.squeeze.numo.to_arrow.to_arrow_array
+
+segments = vad.segments_from_samples(Whisper::VAD::Params.new, samples)
 ```
 
 Development
