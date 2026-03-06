@@ -295,7 +295,7 @@ static void whisper_print_usage(int /*argc*/, char ** argv, const whisper_params
     // Voice Activity Detection (VAD) parameters
     fprintf(stderr, "\nVoice Activity Detection (VAD) options:\n");
     fprintf(stderr, "             --vad                           [%-7s] enable Voice Activity Detection (VAD)\n",            params.vad ? "true" : "false");
-    fprintf(stderr, "             --stable-timestamps             [%-7s] enable stable timestamps (requires --vad-model)\n", params.stable_timestamps ? "true" : "false");
+    fprintf(stderr, "             --stable-timestamps             [%-7s] enable stable timestamps\n", params.stable_timestamps ? "true" : "false");
     fprintf(stderr, "  -vm FNAME, --vad-model FNAME               [%-7s] VAD model path\n",                                   params.vad_model.c_str());
     fprintf(stderr, "  -vt N,     --vad-threshold N               [%-7.2f] VAD threshold for speech recognition\n",           params.vad_threshold);
     fprintf(stderr, "  -vspd N,   --vad-min-speech-duration-ms  N [%-7d] VAD min speech duration (0.0-1.0)\n",                params.vad_min_speech_duration_ms);
@@ -1003,12 +1003,6 @@ int main(int argc, char ** argv) {
         fprintf(stderr, "error: cannot use both --diarize and --tinydiarize\n");
         whisper_print_usage(argc, argv, params);
         exit(0);
-    }
-
-    if (params.stable_timestamps && params.vad_model.empty()) {
-        fprintf(stderr, "error: --stable-timestamps requires --vad-model\n");
-        whisper_print_usage(argc, argv, params);
-        return 2;
     }
 
     if (params.no_prints) {

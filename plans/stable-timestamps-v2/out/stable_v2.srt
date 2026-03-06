@@ -1,0 +1,179 @@
+1
+00:00:00,090 --> 00:00:03,000
+Silence regions are useful for validating timestamp behavior.
+
+2
+00:00:04,010 --> 00:00:06,340
+This is a stable timestamps verification sample.
+
+3
+00:00:06,430 --> 00:00:28,540
+The quick brown fox jumps over the lazy dart.
+
+4
+00:00:29,750 --> 00:00:32,360
+The quick brown fox jumps over the lazy dart.
+
+5
+00:00:32,450 --> 00:00:55,340
+A longer pause may appear occasionally in this generated file.
+
+6
+00:00:55,430 --> 00:00:59,320
+We are generating synthetic speech for timestamp quality checks.
+
+7
+00:00:59,410 --> 00:01:03,020
+Agent-based validation benefits from reputable synthetic inputs.
+
+8
+00:01:03,110 --> 00:01:07,020
+Agent-based validation benefits from reputable synthetic inputs.
+
+9
+00:01:07,110 --> 00:01:09,720
+A longer pause may appear occasionally in this generated file.
+
+10
+00:01:09,790 --> 00:01:31,420
+This sentence is intentionally short.
+
+11
+00:01:31,510 --> 00:01:53,120
+A longer pause may appear on the short.
+
+12
+00:01:53,210 --> 00:01:56,820
+A longer pause may appear on the short.
+
+13
+00:01:56,910 --> 00:02:00,520
+A longer pause may appear on the short.
+
+14
+00:02:00,610 --> 00:02:04,220
+A longer pause may appear on the short.
+
+15
+00:02:04,310 --> 00:02:07,920
+A longer pause may appear on the short.
+
+16
+00:02:08,010 --> 00:02:11,620
+A longer pause may appear on the short.
+
+17
+00:02:11,710 --> 00:02:13,320
+A longer pause may appear on the short.
+
+18
+00:02:13,410 --> 00:02:15,300
+A longer pause may appear on the short.
+
+19
+00:02:15,410 --> 00:02:19,020
+A longer pause may appear on the short.
+
+20
+00:02:19,110 --> 00:02:20,020
+A longer pause may appear on the short.
+
+21
+00:02:20,110 --> 00:02:22,000
+A longer pause may appear on the short.
+
+22
+00:02:22,110 --> 00:02:23,020
+A longer pause may appear on the short.
+
+23
+00:02:23,110 --> 00:02:24,720
+A longer pause may appear on the short.
+
+24
+00:02:24,810 --> 00:02:25,720
+A longer pause may appear on the short.
+
+25
+00:02:25,810 --> 00:02:26,420
+A longer pause may appear on the short.
+
+26
+00:02:26,510 --> 00:02:28,400
+A longer pause may appear on the short.
+
+27
+00:02:28,510 --> 00:02:29,420
+A longer pause may appear on the short.
+
+28
+00:02:29,510 --> 00:02:30,320
+A longer pause may appear on the short.
+
+29
+00:02:30,510 --> 00:02:31,420
+A longer pause may appear on the short.
+
+30
+00:02:31,510 --> 00:02:32,420
+A longer pause may appear on the short.
+
+31
+00:02:32,510 --> 00:02:38,790
+over the lazy dog. Whisper should align words near the actual spoken audio. We are generating
+
+32
+00:02:38,990 --> 00:02:44,820
+synthetic speech for timestamp quality checks. Silence regions are useful for validating timestamp
+
+33
+00:02:44,910 --> 00:02:51,190
+behavior. Please verify that boundaries snap away from silence. We are generating synthetic speech
+
+34
+00:02:51,310 --> 00:02:56,090
+for timestamp quality checks. We are generating synthetic speech for timestamp quality checks.
+
+35
+00:03:16,910 --> 00:03:21,960
+Now we add another line with slightly different pacing. Please verify that boundaries snap
+
+36
+00:03:22,110 --> 00:03:26,930
+away from silence. Silence regions are useful for validating timestamp behavior.
+
+37
+00:03:50,990 --> 00:03:52,820
+Please verify that boundaries snap away from silence.
+
+38
+00:03:52,820 --> 00:03:52,820
+Silence.
+
+39
+00:03:52,820 --> 00:03:52,820
+Silence.
+
+40
+00:03:52,820 --> 00:03:52,820
+Silence.
+
+41
+00:03:52,910 --> 00:04:14,340
+Now we add another line with slightly different pacing. A longer pause may appear occasionally in this generated file. Whisper should align words near the actual spoken audio.
+
+42
+00:04:14,430 --> 00:04:25,700
+Now we add another line with slightly different pacing. A longer pause may appear occasionally in this generated file. Whisper should align words near the actual spoken audio.
+
+43
+00:04:25,790 --> 00:04:40,740
+Whisper should align words near the actual spoken audio. Now we add another line with slightly different pacing. A longer pause may appear occasionally in this generated file. Whisper should align words near the actual spoken audio. This is a stable timestamps verification sample.
+
+44
+00:04:40,830 --> 00:04:54,100
+Now we add another line with slightly different pacing. Now we add another line with slightly different pacing. The quick brown fox jumps over the lazy dog. Whisper should align words near the actual spoken audio.
+
+45
+00:04:54,190 --> 00:05:00,070
+Agent-based validation benefits from repeatable synthetic inputs. Please verify that boundaries snap away from silence.

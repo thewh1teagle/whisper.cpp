@@ -21,8 +21,3 @@ struct whisper_segment {
     bool speaker_turn_next;
 };
 
-// Mapping point between processed (VAD-stripped) and original timelines.
-struct vad_time_mapping {
-    int64_t processed_time;
-    int64_t original_time;
-};
